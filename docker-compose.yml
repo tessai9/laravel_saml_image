@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+  web:
+    build: ./docker/nginx
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - app_source:/app
+      - logs:/log
+    depends_on:
+      - app
+
+  app:
+    build: .
+    ports:
+      - 9000:9000
+    volumes:
+      - app_source:/app
+
+volumes:
+  app_source:
+  logs:
