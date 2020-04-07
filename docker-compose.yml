@@ -7,10 +7,21 @@ services:
       - 80:80
       - 443:443
     volumes:
+      # - ssl_info:/etc/nginx/ssl
       - app_source:/app
-      - logs:/log
+      - auth_source:/simplesamlphp/www
+      # - ./var/log:/log
     depends_on:
       - app
+      - idp
+
+  idp:
+    build: ./docker/simplesamlphp
+    ports:
+        - 9001:9001
+    volumes:
+        - auth_source:/simplesamlphp/www
+        # - ssl_info:/simplesamlphp/cert
 
   app:
     build: .
@@ -18,7 +29,25 @@ services:
       - 9000:9000
     volumes:
       - app_source:/app
+      # - ./var:/app/var
+
+  db:
+    image: mysql:8.0.17
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+        MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+        MYSQL_DATABASE: # some text
+        MYSQL_USER: # some text
+        MYSQL_PASSWORD: # some text
+    ports:
+        - 3306:3306
+        - 33060:33060
+    volumes:
+        - db_data:/var/lib/mysql
 
 volumes:
+  # ssl_info:
   app_source:
-  logs:
+  auth_source:
+  db_data:
