@@ -7,8 +7,8 @@ services:
       - 80:80
       - 443:443
     volumes:
-      # - ssl_info:/etc/nginx/ssl
-      - app_source:/app
+      - ssl_info:/etc/nginx/ssl
+      - .:/app
       - auth_source:/simplesamlphp/www
       # - ./var/log:/log
     depends_on:
@@ -21,14 +21,14 @@ services:
         - 9001:9001
     volumes:
         - auth_source:/simplesamlphp/www
-        # - ssl_info:/simplesamlphp/cert
+        - ssl_info:/simplesamlphp/cert
 
   app:
     build: .
     ports:
       - 9000:9000
     volumes:
-      - app_source:/app
+      - .:/app
       # - ./var:/app/var
 
   db:
@@ -37,9 +37,9 @@ services:
     restart: always
     environment:
         MYSQL_ALLOW_EMPTY_PASSWORD: "true"
-        MYSQL_DATABASE: # some text
-        MYSQL_USER: # some text
-        MYSQL_PASSWORD: # some text
+        MYSQL_DATABASE: my_database
+        MYSQL_USER: my_user
+        MYSQL_PASSWORD: my_password
     ports:
         - 3306:3306
         - 33060:33060
@@ -47,7 +47,7 @@ services:
         - db_data:/var/lib/mysql
 
 volumes:
-  # ssl_info:
+  ssl_info:
   app_source:
   auth_source:
   db_data:

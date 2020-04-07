@@ -27,7 +27,7 @@ $config = [
      * external url, no matter where you come from (direct access or via the
      * reverse proxy).
      */
-    'baseurlpath' => 'http://localhost/simplesaml/',
+    'baseurlpath' => 'http://my-simplesamlphp.jp/simplesaml/',
 
     /*
      * The 'application' configuration array groups a set configuration options
@@ -130,7 +130,7 @@ $config = [
      * A possible way to generate a random salt is by running the following command from a unix shell:
      * LC_CTYPE=C tr -c -d '0123456789abcdefghijklmnopqrstuvwxyz' </dev/urandom | dd bs=32 count=1 2>/dev/null;echo
      */
-    'secretsalt' => 'SomeText',
+    'secretsalt' => 'SampleSAMLServer',
 
     /*
      * This password must be kept secret, and modified from the default value 123.
@@ -138,7 +138,7 @@ $config = [
      * metadata listing and diagnostics pages.
      * You can also put a hash here; run "bin/pwgen.php" to generate one.
      */
-    'auth.adminpassword' => 'PassForAdmin',
+    'auth.adminpassword' => 'administrator',
 
     /*
      * Set this options to true if you want to require administrator password to access the web interface

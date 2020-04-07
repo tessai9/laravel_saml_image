@@ -7,9 +7,9 @@
  */
 
  /*
- * Home Assist Application Server
+ * Application Server
  */
-$metadata['https://localhost'] = [
+$metadata['https://my-laravel-sample.jp'] = [
     'AssertionConsumerService' => '',   // some text
     'SingleLogoutService' => '',    // some text
 ];
