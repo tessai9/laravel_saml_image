@@ -10,8 +10,10 @@
  * Application Server
  */
 $metadata['https://my-laravel-sample.jp'] = [
-    'AssertionConsumerService' => '',   // some text
-    'SingleLogoutService' => '',    // some text
+  'AssertionConsumerService' => 'https://my-laravel-sample.jp/test/acs',
+  'SingleLogoutService' => 'https://my-laravel-sample.jp/test/sls',
+  'NameIDFormat' => 'urn:oasis:names:tc:SAML:2.0:nameid-format:persistent',
+  'simplesaml.nameidattribute' => 'uid'
 ];
 
 /*

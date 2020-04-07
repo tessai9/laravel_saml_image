@@ -175,6 +175,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // laravel-saml2
+        Aacotroneo\Saml2\Saml2ServiceProvider::class,
     ],
 
     /*
