@@ -1,4 +1,4 @@
-FROM php:7.2.11-fpm-alpine3.6
+FROM php:7.3.11-fpm-alpine
 
 WORKDIR /
 
@@ -12,7 +12,10 @@ RUN wget https://simplesamlphp.org/download?latest -O simplesamlphp.tar.gz \
     && mv $TARGET_DIR simplesamlphp
 
 # 設定ファイルのコピー
-COPY config/config.php /simplesamlphp/config/config.php
 COPY config/zz-docker.conf /usr/local/etc/php-fpm.d/zz-docker.conf
+COPY config/config.php /simplesamlphp/config/config.php
+COPY config/authsources.php /simplesamlphp/config/authsources.php
+COPY metadata/saml20-idp-hosted.php /simplesamlphp/metadata/saml20-idp-hosted.php
+COPY metadata/saml20-sp-remote.php /simplesamlphp/metadata/saml20-sp-remote.php
 
 EXPOSE 9001
