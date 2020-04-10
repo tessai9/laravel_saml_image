@@ -9,7 +9,8 @@ RUN wget https://simplesamlphp.org/download?latest -O simplesamlphp.tar.gz \
     && tar xzf simplesamlphp.tar.gz \
     && rm -f simplesamlphp.tar.gz \
     && TARGET_DIR=$(ls | grep simplesamlphp) \
-    && mv $TARGET_DIR simplesamlphp
+    && mv $TARGET_DIR simplesamlphp \
+    && touch simplesamlphp/modules/exampleauth/enable
 
 # 設定ファイルのコピー
 COPY config/zz-docker.conf /usr/local/etc/php-fpm.d/zz-docker.conf

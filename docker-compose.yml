@@ -48,6 +48,5 @@ services:
 
 volumes:
   ssl_info:
-  app_source:
   auth_source:
   db_data:

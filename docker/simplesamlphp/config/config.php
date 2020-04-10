@@ -27,7 +27,7 @@ $config = [
      * external url, no matter where you come from (direct access or via the
      * reverse proxy).
      */
-    'baseurlpath' => 'http://my-simplesamlphp.jp/simplesaml/',
+    'baseurlpath' => 'https://my-simplesamlphp.jp/simplesaml/',
 
     /*
      * The 'application' configuration array groups a set configuration options
