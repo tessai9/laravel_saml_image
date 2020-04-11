@@ -9,8 +9,8 @@ services:
     volumes:
       - ssl_info:/etc/nginx/ssl
       - .:/app
+      - vendor:/app/vendor
       - auth_source:/simplesamlphp/www
-      # - ./var/log:/log
     depends_on:
       - app
       - idp
@@ -29,7 +29,7 @@ services:
       - 9000:9000
     volumes:
       - .:/app
-      # - ./var:/app/var
+      - vendor:/app/vendor
 
   db:
     image: mysql:8.0.17
@@ -49,4 +49,5 @@ services:
 volumes:
   ssl_info:
   auth_source:
+  vendor:
   db_data:
